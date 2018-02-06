@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.5.1)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - IGListKit (3.1.1):
+    - IGListKit/Default (= 3.1.1)
+  - IGListKit/Default (3.1.1):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (3.1.1)
+  - Moya/Core (10.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (10.0.2):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - Result (3.2.4)
+  - RxSwift (4.1.2)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`, branch `wip/swift4`)
+  - IGListKit (~> 3.0)
+  - Moya/RxSwift (~> 10.0)
+  - RxSwift (~> 4.0)
+  - SwiftyJSON
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :branch: wip/swift4
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: db432ca1b1a3d8f83ee1f881208c0c960a325e73
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  IGListKit: cb97f405ae43e59fe1da74271e19427ec20d3c07
+  Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: c9d1200d50d5af0cb9709a48332ab9bde09b2552
+
+COCOAPODS: 1.4.0
