@@ -6,13 +6,13 @@ target 'mhworld' do
   use_frameworks!
 
   # Pods for mhworld
-  pod 'Alamofire', '~> 4.5'
-  pod 'IGListKit', '~> 3.0'
-  pod 'Moya/RxSwift', '~> 10.0'
-  pod 'SwiftyJSON'
-  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git', :branch => 'wip/swift4'
-  pod 'RxSwift', '~> 4.0'
-
+  pod 'Moya-ObjectMapper'
+  pod 'Moya-ObjectMapper/RxSwift'
+  pod 'ObjectMapper'
+  pod 'Moya'
+  pod 'RxSwift'
+  pod 'URLNavigator'
+  
   target 'mhworldTests' do
     inherit! :search_paths
     # Pods for testing
