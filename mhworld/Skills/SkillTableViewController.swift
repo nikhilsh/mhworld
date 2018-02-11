@@ -23,7 +23,6 @@ class SkillTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func fetchSkills() {
-        var success = true
         provider.request(.skills) { (result) in
             switch result {
             case let .success(moyaResponse):
@@ -31,15 +30,11 @@ class SkillTableViewController: UITableViewController, UISearchBarDelegate {
                     let skills = try moyaResponse.mapArray(Skill.self)
                     self.skillArray = skills
                 } catch {
-                    success = false
+                    print("skill array nothing")
                 }
                 self.tableView.reloadData()
             case let .failure(error):
-                guard let error = error as? CustomStringConvertible else {
-                    break
-                }
                 print(error)
-                success = false
             }
         }
     }
@@ -54,17 +49,14 @@ class SkillTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "skillCell", for: indexPath) as! SkillTableViewCell
-
-        guard let skill = skillArray[indexPath.row] as? Skill else {
-            return UITableViewCell()
-        }
+        let skill = skillArray[indexPath.row]
         cell.skillLabel.text = skill.name
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

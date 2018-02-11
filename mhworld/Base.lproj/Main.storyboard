@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--MH World-->
         <scene sceneID="Lnm-8l-sbJ">
             <objects>
                 <viewController id="lWf-De-K8I" customClass="ViewController" customModule="mhworld" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o8z-KF-YH5"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YVy-qO-LRS"/>
+                    <navigationItem key="navigationItem" title="MH World" id="9vH-A6-ooC"/>
                     <connections>
                         <outlet property="tableView" destination="nAI-qy-JwG" id="45p-Gx-N6b"/>
                     </connections>

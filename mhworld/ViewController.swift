@@ -12,18 +12,10 @@ import URLNavigator
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    
+    let menuArray = ["Builder", "Skills", "Guides"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-//        setupNetworkLayer()
     }
-    
-//    func setupNetworkLayer() {
-//        // Tuck this away somewhere where it'll be visible to anyone who wants to use it
-//        var provider: MoyaProvider<MyService>!
-//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -35,17 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "introCell", for: indexPath) as! MenuTableViewCell
-        switch indexPath.row {
-        case 0:
-            cell.cellLabel.text = "Builder"
-        case 1:
-            cell.cellLabel.text = "Skills"
-        case 2:
-            cell.cellLabel.text = "Guides"
-        default:
-            return cell
-        }
-        return UITableViewCell()
+        cell.cellLabel.text = menuArray[indexPath.row]
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -54,18 +37,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let storyboard = UIStoryboard.init(name: "Skill", bundle: nil)
             return storyboard.instantiateViewController(withIdentifier: "SkillTableViewController")
         }
-        navigator.push("mhworld://skills")
+        
+        if indexPath.row == 1 {
+            navigator.push("mhworld://skills")
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.tableView.frame.height/3
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
