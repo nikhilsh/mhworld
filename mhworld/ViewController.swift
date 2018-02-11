@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navigator = Navigator()
-        navigator.register("mhworld://skills") {_,_,_ in
+        navigator.register("mhworld://skills") { _,_,_ in
             let storyboard = UIStoryboard.init(name: "Skill", bundle: nil)
             return storyboard.instantiateViewController(withIdentifier: "SkillTableViewController")
         }
