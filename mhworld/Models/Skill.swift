@@ -21,6 +21,12 @@ struct Skill: Mappable {
         }
     }
     
+    init(name: String, level: Int, id: Int) {
+        self.name = name
+        self.level = level
+        self.id = id
+    }
+    
     mutating func mapping(map: Map) {
         name <- map["name"]
         level <- map["level"]

@@ -11,7 +11,7 @@ import Moya
 
 enum MyService {
     case skills
-    case builder(skills: Skill, slots: [String: Int])
+    case builder(skills: [Skill], slots: [String: Int])
 }
 
 extension MyService: TargetType {

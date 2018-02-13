@@ -37,8 +37,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let storyboard = UIStoryboard.init(name: "Skill", bundle: nil)
             return storyboard.instantiateViewController(withIdentifier: "SkillTableViewController")
         }
+        navigator.register("mhworld://build") { _,_,_ in
+            let storyboard = UIStoryboard.init(name: "Builder", bundle: nil)
+            return storyboard.instantiateViewController(withIdentifier: "BuilderTableViewController")
+        }
         
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
+            navigator.push("mhworld://build")
+        } else if indexPath.row == 1 {
             navigator.push("mhworld://skills")
         }
         tableView.deselectRow(at: indexPath, animated: true)
