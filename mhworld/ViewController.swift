@@ -28,6 +28,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "introCell", for: indexPath) as! MenuTableViewCell
         cell.cellLabel.text = menuArray[indexPath.row]
+        let view = UIImageView(image: UIImage(named: "\(menuArray[indexPath.row].lowercased())-background"))
+        view.contentMode = .scaleAspectFill
+        view.alpha = 0.6
+        cell.backgroundView = view
         return cell
     }
     
