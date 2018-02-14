@@ -16,6 +16,7 @@ class BuiltArmorTableViewController: UITableViewController {
     var chosenSkills = [Skill]()
     var provider = MoyaProvider<MyService>()
     var armorList = [Builder]()
+    var slots = [String: Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,10 @@ class BuiltArmorTableViewController: UITableViewController {
     }
     
     func fetchSkills() {
-        provider.request(.builder(skills: self.chosenSkills, slots: ["level1": 2, "level2": 0])) { (result) in
+        let skillsDictionary = self.chosenSkills.map { (skill) -> [String: Any] in
+            skill.toJSON()
+        }
+        provider.request(.builder(skills: skillsDictionary, slots: ["level1": 0, "level2": 0])) { (result) in
             switch result {
             case let .success(moyaResponse):
                 do {

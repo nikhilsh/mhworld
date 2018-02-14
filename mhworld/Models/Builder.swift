@@ -21,15 +21,6 @@ struct Builder: Mappable {
         
     }
     
-    init(head: String, legs: String, body: String, waist: String, arms: String) {
-//        self.skills = skills
-        self.head = head
-        self.legs = legs
-        self.body = body
-        self.waist = waist
-        self.arms = arms
-    }
-    
     mutating func mapping(map: Map) {
 //        skills <- map["skills"]
         head <- map["head"]

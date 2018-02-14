@@ -70,7 +70,12 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate {
             }
             if let name = skill.name, let id = skill.id, let level = Int(textfield.text!) {
                 let chosenSkill = Skill(name: name, level: level, id: id)
-                self.skillChosenArray.append(chosenSkill)
+                do {
+                    self.skillChosenArray.append(chosenSkill)
+                    // use data here
+                } catch {
+                    print(error)
+                }
             }
         }
         
