@@ -13,10 +13,11 @@ import ObjectMapper
 import Moya_ObjectMapper
 import URLNavigator
 
-class BuilderTableViewController: UITableViewController, UISearchBarDelegate {
+class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UITextFieldDelegate {
     var provider = MoyaProvider<MyService>()
     var skillArray = [Skill]()
     var skillChosenArray = [Skill]()
+    var currentSkill: Skill?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +60,12 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let skill = skillArray[indexPath.row] as Skill
+        currentSkill = skill
         let alertController = UIAlertController(title: skill.name, message: "Enter the skill level required", preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.keyboardType = .numberPad
             textfield.placeholder = "Skill level"
+            textfield.delegate = self
         }
         let saveAction = UIAlertAction(title: "Add", style: .default) { (action) in
             guard let textfield = alertController.textFields?.first else {
@@ -70,12 +73,7 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate {
             }
             if let name = skill.name, let id = skill.id, let level = Int(textfield.text!) {
                 let chosenSkill = Skill(name: name, level: level, id: id)
-                do {
-                    self.skillChosenArray.append(chosenSkill)
-                    // use data here
-                } catch {
-                    print(error)
-                }
+                self.skillChosenArray.append(chosenSkill)
             }
         }
         
@@ -108,4 +106,22 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate {
         navigator.push("mhworld://builder/results")
         
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let skill = currentSkill else {
+            return false
+        }
+        guard let text = textField.text else {
+            return false
+        }
+        let newString = text.replacingCharacters(in: Range(range, in: text)!, with: string)
+        if newString.isEmpty {
+            return true
+        }
+        guard let intValue = Int(newString) else {
+            return false
+        }
+        return (intValue > 0 && intValue <= skill.max!)
+    }
+    
 }
