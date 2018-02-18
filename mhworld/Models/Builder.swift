@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 struct Builder: Mappable {
-//    var skills: [String: Int]?
+    var skills: [String: Int]?
     var head: String?
     var legs: String?
     var body: String?
@@ -22,7 +22,7 @@ struct Builder: Mappable {
     }
     
     mutating func mapping(map: Map) {
-//        skills <- map["skills"]
+        skills <- map["skills"]
         head <- map["head"]
         legs <- map["legs"]
         body <- map["body"]

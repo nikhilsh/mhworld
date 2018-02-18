@@ -11,6 +11,7 @@ import UIKit
 import Moya
 import ObjectMapper
 import Moya_ObjectMapper
+import URLNavigator
 
 class BuiltArmorTableViewController: UITableViewController {
     var chosenSkills = [Skill]()
@@ -66,5 +67,18 @@ class BuiltArmorTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 216
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let armor = armorList[indexPath.row]
+        let navigator = Navigator()
+        navigator.register("mhworld://builder/details") { _,_,_ in
+            let storyboard = UIStoryboard.init(name: "Builder", bundle: nil)
+            let viewController: BuiltArmorDetailsViewController = storyboard.instantiateViewController(withIdentifier: "BuiltArmorDetailsViewController") as! BuiltArmorDetailsViewController
+            viewController.builtSkill = armor
+            return viewController
+        }
+        
+        navigator.push("mhworld://builder/details")
     }
 }

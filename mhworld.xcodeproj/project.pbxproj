@@ -19,6 +19,7 @@
 		3122E911202FFD29005801E8 /* SkillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122E910202FFD29005801E8 /* SkillTableViewController.swift */; };
 		3122E913202FFD33005801E8 /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122E912202FFD33005801E8 /* SkillTableViewCell.swift */; };
 		3122E916202FFDD7005801E8 /* MyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122E915202FFDD7005801E8 /* MyService.swift */; };
+		316EBC662039BDA70019CCDF /* BuiltArmorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316EBC652039BDA70019CCDF /* BuiltArmorDetailsViewController.swift */; };
 		31C4D6CB2033396B004FFE60 /* Builder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C4D6CA2033396B004FFE60 /* Builder.storyboard */; };
 		31C4D6CD203339D6004FFE60 /* BuilderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4D6CC203339D6004FFE60 /* BuilderTableViewController.swift */; };
 		31C4D6CF203339E3004FFE60 /* BuilderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4D6CE203339E3004FFE60 /* BuilderTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		3122E910202FFD29005801E8 /* SkillTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewController.swift; sourceTree = "<group>"; };
 		3122E912202FFD33005801E8 /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		3122E915202FFDD7005801E8 /* MyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyService.swift; sourceTree = "<group>"; };
+		316EBC652039BDA70019CCDF /* BuiltArmorDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuiltArmorDetailsViewController.swift; sourceTree = "<group>"; };
 		31C4D6CA2033396B004FFE60 /* Builder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Builder.storyboard; sourceTree = "<group>"; };
 		31C4D6CC203339D6004FFE60 /* BuilderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderTableViewController.swift; sourceTree = "<group>"; };
 		31C4D6CE203339E3004FFE60 /* BuilderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderTableViewCell.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				31C4D6CE203339E3004FFE60 /* BuilderTableViewCell.swift */,
 				31C4D6D0203343CF004FFE60 /* BuiltArmorTableViewController.swift */,
 				31C4D6D2203343D9004FFE60 /* BuiltArmorTableViewCell.swift */,
+				316EBC652039BDA70019CCDF /* BuiltArmorDetailsViewController.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				3122E916202FFDD7005801E8 /* MyService.swift in Sources */,
 				31C4D6CF203339E3004FFE60 /* BuilderTableViewCell.swift in Sources */,
 				3122E911202FFD29005801E8 /* SkillTableViewController.swift in Sources */,
+				316EBC662039BDA70019CCDF /* BuiltArmorDetailsViewController.swift in Sources */,
 				3122E913202FFD33005801E8 /* SkillTableViewCell.swift in Sources */,
 				310190502029D29B008F66B0 /* AppDelegate.swift in Sources */,
 				3122E90A202FF2D5005801E8 /* MenuTableViewCell.swift in Sources */,

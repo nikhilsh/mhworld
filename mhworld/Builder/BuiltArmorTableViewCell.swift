@@ -16,5 +16,4 @@ class BuiltArmorTableViewCell: UITableViewCell {
     @IBOutlet weak var waistLabel: UILabel!
     @IBOutlet weak var legsLabel: UILabel!
     
-    
 }
