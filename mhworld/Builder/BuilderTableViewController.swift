@@ -61,7 +61,10 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let skill = skillArray[indexPath.row] as Skill
         currentSkill = skill
-        let alertController = UIAlertController(title: skill.name, message: "Enter the skill level required", preferredStyle: .alert)
+        guard let maxSkillLevel = skill.max else {
+            return
+        }
+        let alertController = UIAlertController(title: skill.name, message: "Enter the skill level required. \nMax level: \(String(maxSkillLevel))", preferredStyle: .alert)
         alertController.addTextField { (textfield) in
             textfield.keyboardType = .numberPad
             textfield.placeholder = "Skill level"
