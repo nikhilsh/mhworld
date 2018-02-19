@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LpS-kL-MNT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LpS-kL-MNT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,12 +18,16 @@
         <scene sceneID="Lnm-8l-sbJ">
             <objects>
                 <viewController id="lWf-De-K8I" customClass="ViewController" customModule="mhworld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ohl-LY-yHf"/>
+                        <viewControllerLayoutGuide type="bottom" id="2la-3o-7nC"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5NJ-ZF-4bC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nAI-qy-JwG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <tableView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nAI-qy-JwG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="introCell" rowHeight="103" id="3HX-aD-DZa" customClass="MenuTableViewCell" customModule="mhworld" customModuleProvider="target">
@@ -61,16 +64,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="o8z-KF-YH5" firstAttribute="trailing" secondItem="nAI-qy-JwG" secondAttribute="trailing" id="CNM-0s-07r"/>
-                            <constraint firstItem="nAI-qy-JwG" firstAttribute="leading" secondItem="o8z-KF-YH5" secondAttribute="leading" id="HxK-EV-Uiw"/>
-                            <constraint firstItem="o8z-KF-YH5" firstAttribute="top" secondItem="nAI-qy-JwG" secondAttribute="top" id="jli-UC-Str"/>
-                            <constraint firstItem="o8z-KF-YH5" firstAttribute="bottom" secondItem="nAI-qy-JwG" secondAttribute="bottom" id="qWP-gK-s1t"/>
+                            <constraint firstAttribute="trailing" secondItem="nAI-qy-JwG" secondAttribute="trailing" id="CNM-0s-07r"/>
+                            <constraint firstItem="nAI-qy-JwG" firstAttribute="leading" secondItem="5NJ-ZF-4bC" secondAttribute="leading" id="HxK-EV-Uiw"/>
+                            <constraint firstItem="nAI-qy-JwG" firstAttribute="height" secondItem="5NJ-ZF-4bC" secondAttribute="height" id="dbp-rj-Ewp"/>
+                            <constraint firstItem="nAI-qy-JwG" firstAttribute="top" secondItem="Ohl-LY-yHf" secondAttribute="bottom" constant="-20" id="mT2-1b-nAw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="o8z-KF-YH5"/>
                     </view>
                     <navigationItem key="navigationItem" title="MH World" id="9vH-A6-ooC"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="nAI-qy-JwG" id="45p-Gx-N6b"/>
+                        <outlet property="topConstraint" destination="mT2-1b-nAw" id="d7m-5c-Jda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyN-j9-PY9" userLabel="First Responder" sceneMemberID="firstResponder"/>

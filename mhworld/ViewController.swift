@@ -12,9 +12,20 @@ import URLNavigator
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
     let menuArray = ["Builder", "Skills", "Guides"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            if UIScreen.main.nativeBounds.height == 2436 {
+                topConstraint.constant = -88
+            } else {
+                topConstraint.constant = -40
+            }
+        }
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
