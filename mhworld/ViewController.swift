@@ -25,6 +25,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 topConstraint.constant = -40
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBar.isHidden = true
     }
     

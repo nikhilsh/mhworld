@@ -12,14 +12,30 @@ import Moya
 import ObjectMapper
 import Moya_ObjectMapper
 
-class SkillTableViewController: UITableViewController, UISearchBarDelegate {
+class SkillTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
+    @IBOutlet weak var searchBar: UISearchBar!
     var provider = MoyaProvider<MyService>()
     var skillArray = [Skill]()
+    var filteredSkillArray = [Skill]()
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchSkills()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search skills"
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        }
+        definesPresentationContext = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func fetchSkills() {
@@ -44,12 +60,21 @@ class SkillTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredSkillArray.count
+        }
+        
         return skillArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "skillCell", for: indexPath) as! SkillTableViewCell
-        let skill = skillArray[indexPath.row]
+        let skill: Skill
+        if isFiltering() {
+            skill = filteredSkillArray[indexPath.row]
+        } else {
+            skill = skillArray[indexPath.row]
+        }
         cell.skillLabel.text = skill.name
         
         return cell
@@ -63,4 +88,27 @@ class SkillTableViewController: UITableViewController, UISearchBarDelegate {
         return 44
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchResults = searchController.searchBar.text else {
+            return
+        }
+        filterContentForSearchText(searchResults)
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredSkillArray = skillArray.filter({(skill: Skill) -> Bool in
+            return skill.name!.lowercased().contains(searchText.lowercased())
+        })
+        self.tableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
 }
+

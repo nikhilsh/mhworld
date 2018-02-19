@@ -25,6 +25,12 @@ class BuiltArmorDetailsViewController: UIViewController {
         loadLabels()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     func loadLabels() {
         guard let builtSkill = builtSkill else {
             return
