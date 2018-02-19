@@ -12,5 +12,6 @@ import UIKit
 class BuilderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var skillLabel: UILabel!
+    @IBOutlet weak var skillLevelLabel: UILabel!
 }
 

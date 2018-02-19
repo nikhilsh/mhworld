@@ -32,20 +32,30 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAT-M0-J6b">
-                                            <rect key="frame" x="16" y="10" width="343" height="23.5"/>
+                                            <rect key="frame" x="16" y="10" width="319" height="24"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z1-bF-G55">
+                                            <rect key="frame" x="345" y="22.5" width="20" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="8z1-bF-G55" secondAttribute="trailing" constant="10" id="ADZ-3W-nDN"/>
                                         <constraint firstItem="HAT-M0-J6b" firstAttribute="leading" secondItem="GGY-3f-1wX" secondAttribute="leading" constant="16" id="FaB-EO-lks"/>
+                                        <constraint firstItem="8z1-bF-G55" firstAttribute="leading" secondItem="HAT-M0-J6b" secondAttribute="trailing" constant="10" id="JlH-YL-5rl"/>
                                         <constraint firstItem="HAT-M0-J6b" firstAttribute="centerY" secondItem="GGY-3f-1wX" secondAttribute="centerY" id="QUe-G0-e1G"/>
-                                        <constraint firstAttribute="trailing" secondItem="HAT-M0-J6b" secondAttribute="trailing" constant="16" id="eo8-DA-zoO"/>
+                                        <constraint firstItem="8z1-bF-G55" firstAttribute="centerY" secondItem="HAT-M0-J6b" secondAttribute="centerY" id="S6p-9N-leH"/>
+                                        <constraint firstAttribute="trailing" secondItem="HAT-M0-J6b" secondAttribute="trailing" constant="40" id="eo8-DA-zoO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="skillLabel" destination="HAT-M0-J6b" id="h2Z-SR-V8O"/>
+                                    <outlet property="skillLevelLabel" destination="8z1-bF-G55" id="G7H-Oa-5xU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

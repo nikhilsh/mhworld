@@ -78,12 +78,14 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
             skill = skillArray[indexPath.row]
         }
         cell.skillLabel.text = skill.name
-        
+        if let skillLevel = skill.level {
+            cell.skillLevelLabel.text = String(skillLevel)
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let skill: Skill
+        var skill: Skill
         if isFiltering() {
             skill = filteredSkillArray[indexPath.row]
         } else {
@@ -105,9 +107,16 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
             }
             if let name = skill.name, let id = skill.id, let level = Int(textfield.text!) {
                 let chosenSkill = Skill(name: name, level: level, id: id)
+                skill.level = level
+                if self.isFiltering() {
+                    self.filteredSkillArray[indexPath.row] = skill
+                } else {
+                    self.skillArray[indexPath.row] = skill
+                }
                 self.skillChosenArray.append(chosenSkill)
             }
             self.searchController.searchBar.text = ""
+            tableView.reloadRows(at: [indexPath], with: .fade)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
