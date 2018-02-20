@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.cellLabel.text = menuArray[indexPath.row]
         let view = UIImageView(image: UIImage(named: "\(menuArray[indexPath.row].lowercased())-background"))
         view.contentMode = .scaleAspectFill
-        view.alpha = 0.6
+        view.alpha = 0.55
         cell.backgroundView = view
         return cell
     }
@@ -66,6 +66,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             navigator.push("mhworld://build")
         } else if indexPath.row == 1 {
             navigator.push("mhworld://skills")
+        } else {
+            let alertController = UIAlertController(title: "Coming soon", message: "Community builds will be coming soon", preferredStyle: .alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alertController.addAction(okayButton)
+            self.present(alertController, animated: true, completion: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
