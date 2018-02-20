@@ -80,6 +80,8 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
         cell.skillLabel.text = skill.name
         if let skillLevel = skill.level {
             cell.skillLevelLabel.text = String(skillLevel)
+        } else {
+            cell.skillLevelLabel.text = ""
         }
         return cell
     }
@@ -100,6 +102,9 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
             textfield.keyboardType = .numberPad
             textfield.placeholder = "Skill level"
             textfield.delegate = self
+            if let currentLevel = skill.level {
+                textfield.text = String(currentLevel)
+            }
         }
         let saveAction = UIAlertAction(title: "Add", style: .default) { (action) in
             guard let textfield = alertController.textFields?.first else {
@@ -113,7 +118,11 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
                 } else {
                     self.skillArray[indexPath.row] = skill
                 }
-                self.skillChosenArray.append(chosenSkill)
+                if let index = self.skillChosenArray.index(where:{$0.id == skill.id}) {
+                    self.skillChosenArray[index] = skill
+                } else {
+                    self.skillChosenArray.append(chosenSkill)
+                }
             }
             self.searchController.searchBar.text = ""
             tableView.reloadRows(at: [indexPath], with: .fade)
