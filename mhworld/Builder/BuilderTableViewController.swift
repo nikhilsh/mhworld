@@ -14,6 +14,7 @@ import Moya_ObjectMapper
 import URLNavigator
 
 class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating, UITextFieldDelegate {
+    
     var provider = MoyaProvider<MyService>()
     var skillArray = [Skill]()
     var filteredSkillArray = [Skill]()
@@ -28,6 +29,7 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search skills"
+        searchController.searchBar.delegate = self
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         }
@@ -83,8 +85,59 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
         } else {
             cell.skillLevelLabel.text = ""
         }
+        guard let maxSkillLevel = skill.max else {
+            return cell
+        }
+        if let index = self.skillChosenArray.index(where:{$0.id == skill.id}) {
+            let currentSkill = skillChosenArray[index]
+            cell.stepper.value = Double(currentSkill.level!)
+        } else {
+            cell.stepper.value = 0.0
+        }
+        cell.stepper.maximumValue = Double(maxSkillLevel)
+        cell.skillLevelLabel.textColor = .black
+        if skill.level == maxSkillLevel {
+            cell.skillLevelLabel.textColor = .red
+        }
         return cell
     }
+    
+    @IBAction func handleStepperChanged(_ sender: UIStepper) {
+        var skill: Skill
+        
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
+        guard let indexPath = self.tableView.indexPathForRow(at: buttonPosition) else {
+            return
+        }
+        
+        skill = skillArray[indexPath.row]
+        
+        if isFiltering() {
+            skill = filteredSkillArray[indexPath.row]
+        }
+        
+        currentSkill = skill
+        
+        if let name = skill.name, let id = skill.id {
+            let level = Int(sender.value)
+            let chosenSkill = Skill(name: name, level: level, id: id)
+            skill.level = level
+            if isFiltering() {
+                self.filteredSkillArray[indexPath.row] = skill
+            } else {
+                self.skillArray[indexPath.row] = skill
+            }
+            
+            
+            if let index = self.skillChosenArray.index(where:{$0.id == skill.id}) {
+                self.skillChosenArray[index] = skill
+            } else {
+                self.skillChosenArray.append(chosenSkill)
+            }
+        }
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var skill: Skill
@@ -195,6 +248,10 @@ class BuilderTableViewController: UITableViewController, UISearchBarDelegate, UI
     
     func isFiltering() -> Bool {
         return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.tableView.reloadData()
     }
     
 }

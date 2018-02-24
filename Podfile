@@ -12,7 +12,6 @@ target 'mhworld' do
   pod 'Moya'
   pod 'RxSwift'
   pod 'URLNavigator'
-  pod 'FCAlertView'
   
   target 'mhworldTests' do
     inherit! :search_paths

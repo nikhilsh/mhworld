@@ -32,30 +32,42 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAT-M0-J6b">
-                                            <rect key="frame" x="16" y="10" width="319" height="24"/>
+                                            <rect key="frame" x="16" y="10" width="218" height="24"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="2QP-vq-Vqu">
+                                            <rect key="frame" x="272" y="7" width="94" height="29"/>
+                                            <connections>
+                                                <action selector="handleStepperChanged:" destination="3iz-SK-g1v" eventType="valueChanged" id="RAf-vv-z6Y"/>
+                                            </connections>
+                                        </stepper>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z1-bF-G55">
-                                            <rect key="frame" x="345" y="22.5" width="20" height="0.0"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <rect key="frame" x="244" y="11" width="20" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="vjI-px-aIi"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="8z1-bF-G55" secondAttribute="trailing" constant="10" id="ADZ-3W-nDN"/>
+                                        <constraint firstItem="8z1-bF-G55" firstAttribute="top" secondItem="GGY-3f-1wX" secondAttribute="top" constant="11" id="4D1-4f-Q2J"/>
+                                        <constraint firstAttribute="trailing" secondItem="2QP-vq-Vqu" secondAttribute="trailing" constant="9" id="58c-iP-By1"/>
+                                        <constraint firstItem="2QP-vq-Vqu" firstAttribute="centerY" secondItem="GGY-3f-1wX" secondAttribute="centerY" id="FFd-Tb-EOf"/>
                                         <constraint firstItem="HAT-M0-J6b" firstAttribute="leading" secondItem="GGY-3f-1wX" secondAttribute="leading" constant="16" id="FaB-EO-lks"/>
                                         <constraint firstItem="8z1-bF-G55" firstAttribute="leading" secondItem="HAT-M0-J6b" secondAttribute="trailing" constant="10" id="JlH-YL-5rl"/>
                                         <constraint firstItem="HAT-M0-J6b" firstAttribute="centerY" secondItem="GGY-3f-1wX" secondAttribute="centerY" id="QUe-G0-e1G"/>
                                         <constraint firstItem="8z1-bF-G55" firstAttribute="centerY" secondItem="HAT-M0-J6b" secondAttribute="centerY" id="S6p-9N-leH"/>
-                                        <constraint firstAttribute="trailing" secondItem="HAT-M0-J6b" secondAttribute="trailing" constant="40" id="eo8-DA-zoO"/>
+                                        <constraint firstItem="2QP-vq-Vqu" firstAttribute="leading" secondItem="8z1-bF-G55" secondAttribute="trailing" constant="8" id="WOW-sF-PmW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="skillLabel" destination="HAT-M0-J6b" id="h2Z-SR-V8O"/>
                                     <outlet property="skillLevelLabel" destination="8z1-bF-G55" id="G7H-Oa-5xU"/>
+                                    <outlet property="stepper" destination="2QP-vq-Vqu" id="102-Iv-VOy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

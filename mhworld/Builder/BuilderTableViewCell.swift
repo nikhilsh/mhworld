@@ -13,5 +13,7 @@ class BuilderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var skillLabel: UILabel!
     @IBOutlet weak var skillLevelLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
+    
 }
 
